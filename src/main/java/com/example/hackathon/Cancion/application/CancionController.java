@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -23,9 +24,10 @@ public class CancionController {
 
     @PostMapping
     public ResponseEntity<Void> createCancion(
-            @RequestBody Cancion cancion
+            @RequestBody Cancion cancion,
+            Principal principal
     ){
-        String location = cancionesService.createCancion(cancion);
+        String location = cancionesService.createCancion(cancion,principal);
         return ResponseEntity.created(URI.create(location)).build();
     }
 
