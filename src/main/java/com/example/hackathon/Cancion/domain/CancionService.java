@@ -41,12 +41,7 @@ public class CancionService {
 
 
 
-        ListaDeReproduccion listaDeReproduccion=cancion.getListaDeReproduccion();
-        listaDeReproduccion.setFechaDeCreacion(new Date());
 
-        Usuario usuario=usuarioRepository.findByEmail(principal.getName()).get();
-        cancion.setUsuario(usuario);
-        cancion.setListaDeReproduccion(listaDeReproduccion);
 
 
         Cancion savedCancion = cancionRepository.save(cancion);
