@@ -4,6 +4,7 @@ import com.example.hackathon.Exceptions.NotFoundException;
 import com.example.hackathon.ListaDeReproduccion.domain.ListaDeReproduccion;
 import com.example.hackathon.ListaDeReproduccion.infrastructure.ListaDeReproduccionRepository;
 import com.example.hackathon.Usuario.infrastructure.UsuarioRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,6 +21,8 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     ListaDeReproduccionRepository listaDeReproduccionRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     public UserDetailsService userDetailsService() {
         return username -> {
@@ -49,4 +52,27 @@ public class UsuarioService implements UserDetailsService {
         return lista;
     }
 
+    public String createPlaylist(Long id, ListaDeReproduccion lista){
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("User not found")
+        );
+        lista.setUsuario(usuario);
+        listaDeReproduccionRepository.save(lista);
+        return "/playlists/" + lista.getId();
+    }
+
+    public void updatePlaylist(Long id, ListaDeReproduccion lista){
+        ListaDeReproduccion listaDeReproduccion = listaDeReproduccionRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Playlist not found")
+        );
+        modelMapper.map(listaDeReproduccion, lista);
+        listaDeReproduccionRepository.save(listaDeReproduccion);
+    }
+
+    public void deletePlaylist(Long id){
+        ListaDeReproduccion lista = listaDeReproduccionRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Playlist not found")
+        );
+        listaDeReproduccionRepository.deleteById(id);
+    }
 }

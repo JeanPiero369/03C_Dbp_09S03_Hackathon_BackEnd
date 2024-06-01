@@ -35,7 +35,7 @@ public class CancionController {
             @RequestBody Cancion cancion
     ){
         cancionesService.updateCancion(id, cancion);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("{id}")

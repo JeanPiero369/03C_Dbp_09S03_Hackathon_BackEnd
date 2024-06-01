@@ -32,4 +32,12 @@ public class ListaDeReproduccion {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "listaDeReproduccion")
     private Usuario usuario;
+
+    public void addCancion(Cancion cancion){
+        canciones.add(cancion);
+    }
+
+    public void deleteCancion(Long id){
+        canciones.removeIf(cancion -> cancion.getId().equals(id));
+    }
 }
