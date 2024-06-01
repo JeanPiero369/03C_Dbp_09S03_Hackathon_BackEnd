@@ -37,6 +37,4 @@ public class Cancion {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-
-
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UsuarioController {
-    @GetMapping("/users/{user_id}/playlists")
-    public ResponseEntity<>
+
 
 }
