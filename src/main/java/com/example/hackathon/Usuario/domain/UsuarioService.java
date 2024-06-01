@@ -49,5 +49,4 @@ public class UsuarioService implements UserDetailsService {
         return lista;
     }
 
-    public
 }
