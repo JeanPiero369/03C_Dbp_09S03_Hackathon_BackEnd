@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -36,8 +37,13 @@ public class Usuario implements UserDetails {
     @Column(name = "contrasena", nullable = false)
     private String password;
 
-    @Column(name = "rol", nullable = false)
+    @Column
+    private Date fechaDeRegistro;
+
+    @Column
     private Role role;
+
+
 
 
 
