@@ -47,8 +47,11 @@ public class Usuario implements UserDetails {
     private Role role;
 
 
-    @OneToMany(mappedBy = "listaDeReproduccion",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ListaDeReproduccion> listasDeReproduccion = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Cancion> canciones = new ArrayList<>();
 
 
 

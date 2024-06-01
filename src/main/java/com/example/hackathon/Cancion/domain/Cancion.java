@@ -3,6 +3,7 @@ package com.example.hackathon.Cancion.domain;
 import com.example.hackathon.Album.domain.Album;
 import com.example.hackathon.Artista.domain.Artista;
 import com.example.hackathon.ListaDeReproduccion.domain.ListaDeReproduccion;
+import com.example.hackathon.Usuario.domain.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,10 @@ public class Cancion {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_album")
     private Album album;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
 
 }
