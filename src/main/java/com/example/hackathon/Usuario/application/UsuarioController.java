@@ -37,4 +37,5 @@ public class UsuarioController {
         String location = usuarioService.createPlaylist(id);
         return ResponseEntity.ok().build();
     }
+
 }
