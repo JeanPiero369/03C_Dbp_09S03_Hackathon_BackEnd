@@ -3,6 +3,7 @@ package com.example.hackathon.ListaDeReproduccion.domain;
 import com.example.hackathon.Album.domain.Album;
 import com.example.hackathon.Cancion.domain.Cancion;
 import com.example.hackathon.Usuario.domain.Usuario;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class ListaDeReproduccion {
     Date fechaDeCreacion;
 
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "listaDeReproduccion",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Cancion> canciones = new ArrayList<>();
 
