@@ -36,7 +36,7 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/playlists/{playlist_id}")
+    @PatchMapping("/playlists/{playlist_id}")
     public ResponseEntity<Void> updatePlaylist(
             @PathVariable("playlist_id") Long id,
             @RequestBody ListaDeReproduccion listaDeReproduccion

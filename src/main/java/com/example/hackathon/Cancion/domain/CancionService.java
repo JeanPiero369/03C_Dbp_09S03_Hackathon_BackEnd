@@ -51,9 +51,9 @@ public class CancionService {
     public void updateCancion(Long id, Cancion cancion){
         Cancion cancionGuardada = cancionRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("Cancion not found")
-
         );
-        modelMapper.map(cancionGuardada, cancion);
+        modelMapper.map(cancion, cancionGuardada);
+        cancionRepository.save(cancionGuardada);
     }
 
     public void deleteCancion(Long id){
