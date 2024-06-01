@@ -32,4 +32,6 @@ public class Cancion {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_album")
     private Album album;
+
+
 }

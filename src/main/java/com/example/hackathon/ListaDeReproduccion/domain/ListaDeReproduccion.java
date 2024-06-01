@@ -1,6 +1,8 @@
 package com.example.hackathon.ListaDeReproduccion.domain;
 
+import com.example.hackathon.Album.domain.Album;
 import com.example.hackathon.Cancion.domain.Cancion;
+import com.example.hackathon.Usuario.domain.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,5 +29,7 @@ public class ListaDeReproduccion {
     @OneToMany(mappedBy = "listaDeReproduccion",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Cancion> canciones = new ArrayList<>();
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "listaDeReproduccion")
+    private Usuario usuario;
 }

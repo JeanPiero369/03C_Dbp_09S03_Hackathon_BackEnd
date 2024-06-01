@@ -1,5 +1,7 @@
 package com.example.hackathon.Usuario.domain;
 
+import com.example.hackathon.Cancion.domain.Cancion;
+import com.example.hackathon.ListaDeReproduccion.domain.ListaDeReproduccion;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -44,10 +47,15 @@ public class Usuario implements UserDetails {
     private Role role;
 
 
+    @OneToMany(mappedBy = "listaDeReproduccion",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<ListaDeReproduccion> listasDeReproduccion = new ArrayList<>();
 
 
 
-  
+
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name())); //CAMBIAR ESTO DESPUES
